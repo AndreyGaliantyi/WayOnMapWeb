@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">WayOnMapWeb</string>
+    <string name="button_text">Загрузить путь</string>
+</resources>
