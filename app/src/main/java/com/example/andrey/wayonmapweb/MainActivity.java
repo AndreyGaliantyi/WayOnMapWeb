@@ -32,28 +32,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         webView=(WebView) findViewById(R.id.webview);
-        AppCompatButton button=(AppCompatButton) findViewById(R.id.button);
+        final AppCompatButton button=(AppCompatButton) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(isConnectingToInternet())
                     if (wasNoConnection){
                         webView.loadUrl("file:///android_asset/map.html");
-                        webView.loadUrl("javascript:addPath()");
+                        button.setText(R.string.button_text);
                         wasNoConnection=false;
                     }
                     else webView.loadUrl("javascript:addPath()");
                 else Toast.makeText(MainActivity.this, "Нет подключения к интернету", Toast.LENGTH_SHORT).show();
             }
         });
-        webView.setWebViewClient(new SSLWebClient());
+        //webView.setWebViewClient(new SSLWebClient());
         webView.setWebChromeClient(new WebChromeClient());
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setDomStorageEnabled(true);
         webView.addJavascriptInterface(new WebAppInterface(this), "android");
         if(isConnectingToInternet())webView.loadUrl("file:///android_asset/map.html");
         else {Toast.makeText(MainActivity.this, "Нет подключения к интернету", Toast.LENGTH_SHORT).show();
-        wasNoConnection=true;}
+        wasNoConnection=true;
+        button.setText(R.string.button_load_map);}
 
     }
 
