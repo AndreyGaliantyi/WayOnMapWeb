@@ -1,5 +1,6 @@
 package com.example.andrey.wayonmapweb;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -14,7 +15,7 @@ import java.net.URL;
  * Created by andrey on 18.06.17.
  */
 
-public class FetchRouteTask extends AsyncTask {
+public class FetchRouteTask1 extends AsyncTask {
 
 
     @Override
@@ -66,5 +67,9 @@ public class FetchRouteTask extends AsyncTask {
             }
         }
         return jsonStr;
+    }
+
+    @Override
+    protected void onPostExecute(Object o) {
     }
 }
